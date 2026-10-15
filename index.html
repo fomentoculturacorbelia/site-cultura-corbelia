@@ -1,0 +1,1061 @@
+<title>Departamento de Cultura de Corbélia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  /* Layout concept: a full-bleed photo hero carousel (like the state and city
+     culture portals), a pill quick-nav strip for jumping to each linguagem,
+     icon-tile program cards, section heads with a vertical accent bar + a
+     decorative blob (borrowed from the Paraná/Foz/Rio culture sites), and a
+     compact "agenda" calendar widget. One vivid palette pulled from
+     @prefa_corbelia's own posts: royal blue, magenta, yellow, green.
+     Deliberately single-theme (always white/light): municipal site, the
+     client asked for white as the fixed base regardless of device theme. */
+  :root{
+    --bg:#ffffff;
+    --surface:#f6f7fd;
+    --ink:#121327;
+    --ink-soft:#49486b;
+    --line:#dde1fb;
+    --primary:#1540c9;
+    --primary-dark:#0c2c93;
+    --primary-ink:#ffffff;
+    --accent:#e21177;
+    --gold:#ffcc00;
+    --violet:#7a2ea6;
+    --teal:#139a4c;
+    --pink:#e21177;
+    color-scheme:light;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Lexend",-apple-system,"Segoe UI",Arial,sans-serif;
+    font-size:17px;
+    line-height:1.6;
+  }
+  a{color:inherit;}
+  img,svg{max-width:100%;}
+  h1,h2,h3{font-family:"Lexend",Arial,sans-serif; font-weight:800; text-wrap:balance; margin:0;}
+  :focus-visible{outline:3px solid var(--gold); outline-offset:2px;}
+  .eyebrow{
+    font-size:0.8rem;
+    font-weight:700;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--accent);
+  }
+  .wrap{
+    max-width:1120px;
+    margin-inline:auto;
+    padding-inline:clamp(16px,5vw,40px);
+  }
+
+  /* ---------- Top utility bar ---------- */
+  .utility-bar{
+    background:var(--bg);
+    color:var(--ink-soft);
+    border-bottom:1px solid var(--line);
+    font-size:0.78rem;
+    font-weight:500;
+  }
+  .utility-bar .wrap{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px 16px;
+    padding-block:7px;
+    flex-wrap:wrap;
+  }
+  .utility-bar a{text-decoration:none; color:var(--primary); font-weight:600;}
+  .utility-bar a:hover{text-decoration:underline;}
+  @media (max-width:560px){
+    .utility-bar .wrap{flex-direction:column; align-items:flex-start; gap:6px;}
+  }
+
+  /* ---------- Header / nav ---------- */
+  header.masthead{background:var(--bg); position:relative; z-index:20;}
+  .nav-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px 16px;
+    padding-block:16px;
+  }
+  .nav-row .wordmark{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-weight:800;
+    font-size:1rem;
+    color:var(--primary);
+    min-width:0;
+  }
+  .nav-row .wordmark span{color:var(--ink); font-weight:500; font-size:0.86rem; white-space:nowrap;}
+  .nav-toggle{
+    display:none;
+    width:40px; height:40px; flex:none;
+    align-items:center; justify-content:center;
+    border:1.5px solid var(--line); border-radius:10px;
+    background:#fff; cursor:pointer;
+  }
+  .nav-links{
+    display:flex;
+    gap:10px clamp(10px,3vw,22px);
+    flex-wrap:wrap;
+    font-size:0.9rem;
+    font-weight:600;
+  }
+  .nav-links a{text-decoration:none; border-bottom:2px solid transparent; padding-bottom:3px;}
+  .nav-links a:hover{border-color:var(--accent); color:var(--accent);}
+  @media (max-width:760px){
+    .nav-row .wordmark span{display:none;}
+    .nav-toggle{display:flex;}
+    .nav-links{
+      display:none;
+      position:absolute; top:100%; left:0; right:0;
+      flex-direction:column; gap:2px;
+      background:var(--bg); border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+      padding:10px clamp(16px,5vw,40px) 16px;
+      box-shadow:0 12px 20px -16px rgba(18,19,39,0.25);
+    }
+    .nav-links.open{display:flex;}
+    .nav-links a{padding-block:10px; border-bottom:1px solid var(--line);}
+    .nav-links a:last-child{border-bottom:none;}
+  }
+
+  /* ---------- Hero carousel ---------- */
+  .hero{background:var(--bg);}
+  .hero .wrap{
+    display:grid;
+    grid-template-columns:1.25fr 1fr;
+    gap:clamp(24px,5vw,48px);
+    align-items:center;
+    padding-block:clamp(28px,5vw,52px);
+  }
+  @media (max-width:800px){.hero .wrap{grid-template-columns:1fr;}}
+  .hero-content .eyebrow{color:var(--accent);}
+  .hero-content h1{
+    color:var(--ink);
+    font-size:clamp(2rem,5.2vw,3.2rem);
+    font-weight:900;
+    line-height:1.06;
+    margin-top:10px;
+  }
+  .hero-content h1 .hl{color:var(--primary);}
+  .hero-content p.lede{
+    color:var(--ink-soft);
+    margin-top:16px;
+    max-width:46ch;
+    font-size:1.1rem;
+  }
+  .hero-stats{display:flex; gap:clamp(16px,4vw,32px); margin-top:26px; flex-wrap:wrap;}
+  .hero-stats div strong{display:block; font-weight:900; font-size:1.8rem; color:var(--primary);}
+  .hero-stats div span{font-size:0.78rem; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; color:var(--ink-soft);}
+
+  .hero-photo{
+    position:relative;
+    border-radius:18px;
+    overflow:hidden;
+    aspect-ratio:4/5;
+    border:3px solid var(--gold);
+    isolation:isolate;
+  }
+  .hero-slide{position:absolute; inset:0; opacity:0; transition:opacity 0.9s ease;}
+  .hero-slide.active{opacity:1;}
+  .hero-slide img{width:100%; height:100%; object-fit:cover; display:block;}
+  .hero-scrim{position:absolute; inset:0; background:linear-gradient(to top, rgba(10,16,26,0.75), transparent 55%);}
+  .hero-nav{
+    position:absolute; z-index:3; top:50%; transform:translateY(-50%);
+    width:36px; height:36px; border-radius:50%;
+    background:rgba(255,255,255,0.22); border:1px solid rgba(255,255,255,0.6);
+    color:#fff; display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+  }
+  .hero-nav:hover{background:rgba(255,255,255,0.38);}
+  .hero-nav.prev{left:12px;}
+  .hero-nav.next{right:12px;}
+  .hero-dots{position:absolute; z-index:3; bottom:14px; left:50%; transform:translateX(-50%); display:flex; gap:7px;}
+  .hero-dots button{width:8px; height:8px; border-radius:50%; border:none; background:rgba(255,255,255,0.5); padding:0; cursor:pointer;}
+  .hero-dots button.active{background:var(--gold); width:20px; border-radius:5px;}
+
+  /* ---------- Quick-nav pill strip ---------- */
+  .quicknav{background:var(--bg); border-bottom:1px solid var(--line); padding-block:14px;}
+  .quicknav .wrap{display:flex; align-items:center; gap:14px; flex-wrap:wrap;}
+  .quicknav .label{color:var(--ink); font-weight:800; font-size:0.95rem; white-space:nowrap;}
+  .quicknav .pills{display:flex; gap:10px; flex-wrap:wrap;}
+  .quicknav a.pill{
+    background:transparent;
+    border:1.5px solid var(--teal);
+    color:var(--teal);
+    text-decoration:none;
+    font-size:0.84rem;
+    font-weight:700;
+    padding:6px 15px;
+    border-radius:999px;
+  }
+  .quicknav a.pill:nth-child(2n){border-color:var(--accent); color:var(--accent);}
+  .quicknav a.pill:nth-child(3n){border-color:var(--violet); color:var(--violet);}
+  .quicknav a.pill:hover{background:var(--teal); color:#fff; border-color:var(--teal);}
+  .quicknav a.pill:nth-child(2n):hover{background:var(--accent); border-color:var(--accent); color:#fff;}
+  .quicknav a.pill:nth-child(3n):hover{background:var(--violet); border-color:var(--violet); color:#fff;}
+
+  /* ---------- Section heads ---------- */
+  section{padding-block:clamp(44px,8vw,78px); position:relative;}
+  .section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-bottom:clamp(26px,5vw,40px);
+  }
+  .section-head .title-row{display:flex; align-items:center; gap:14px;}
+  .section-head .bar{width:7px; align-self:stretch; min-height:40px; background:var(--accent); border-radius:4px;}
+  .section-head h2{font-size:clamp(1.8rem,3.6vw,2.5rem); font-weight:900; text-transform:uppercase;}
+  .section-head p{max-width:40ch; color:var(--ink-soft); font-size:1rem; margin:0;}
+  @media (max-width:600px){
+    .section-head{flex-direction:column; align-items:flex-start; gap:10px;}
+    .section-head p{max-width:none;}
+  }
+  .blob{
+    position:absolute;
+    width:120px; height:120px;
+    border-radius:50%;
+    opacity:0.1;
+    z-index:0;
+  }
+  @media (max-width:640px){.blob{display:none;}}
+
+  /* About */
+  .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:clamp(24px,5vw,56px); position:relative; z-index:1;}
+  @media (max-width:760px){.about-grid{grid-template-columns:1fr;}}
+  .about-grid p{color:var(--ink-soft); font-size:1.05rem;}
+  .about-grid p + p{margin-top:14px;}
+  .about-figures{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  .fig-card{
+    background:var(--surface);
+    border:2px solid var(--line);
+    border-top:5px solid var(--violet);
+    border-radius:12px;
+    padding:18px;
+  }
+  .fig-card:nth-child(2){border-top-color:var(--teal);}
+  .fig-card:nth-child(3){border-top-color:var(--accent);}
+  .fig-card:nth-child(4){border-top-color:var(--gold);}
+  .fig-card strong{display:block; font-weight:900; font-size:1.7rem; color:var(--violet);}
+  .fig-card span{font-size:0.86rem; color:var(--ink-soft); font-weight:500;}
+
+  /* Espaços culturais */
+  .spaces-grid{display:grid; grid-template-columns:1fr 1fr; gap:22px; position:relative; z-index:1;}
+  @media (max-width:760px){.spaces-grid{grid-template-columns:1fr;}}
+  .space-card{background:var(--surface); border:2px solid var(--line); border-radius:18px; overflow:hidden;}
+  .space-card .photo{aspect-ratio:16/9; overflow:hidden;}
+  .space-card .photo img{width:100%; height:100%; object-fit:cover; display:block;}
+  .space-card .body{padding:22px 24px 26px;}
+  .space-card h3{font-size:1.4rem; font-weight:800;}
+  .space-card p.addr{font-size:0.86rem; font-weight:600; color:var(--primary); margin-top:4px;}
+  .space-card p.desc{font-size:0.95rem; color:var(--ink-soft); margin-top:10px;}
+  .space-tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:14px;}
+  .space-tags span{font-size:0.76rem; font-weight:600; padding:4px 11px; border-radius:999px; border:1.5px solid var(--line); color:var(--ink-soft);}
+  .space-links{display:flex; gap:10px; margin-top:18px; flex-wrap:wrap;}
+  .space-links a{display:inline-flex; align-items:center; gap:6px; font-size:0.84rem; font-weight:700; text-decoration:none; color:var(--primary); border:1.5px solid var(--primary); border-radius:999px; padding:7px 14px;}
+  .space-links a:hover{background:var(--primary); color:#fff;}
+  .space-links a.alt{color:var(--accent); border-color:var(--accent);}
+  .space-links a.alt:hover{background:var(--accent); color:#fff;}
+
+  /* Legislação */
+  .legis-note{
+    background:var(--surface); border:1.5px dashed var(--line); border-radius:12px;
+    padding:14px 18px; font-size:0.9rem; color:var(--ink-soft); margin-bottom:22px;
+  }
+  .legis-list{display:flex; flex-direction:column; gap:2px; position:relative; z-index:1;}
+  .legis-item{
+    display:grid; grid-template-columns:40px 1fr auto; gap:16px; align-items:center;
+    padding:18px 16px; border-bottom:2px solid var(--line); position:relative;
+  }
+  .legis-item:first-child{border-top:2px solid var(--line);}
+  .legis-item .ic{
+    width:40px; height:40px; border-radius:10px; background:var(--violet);
+    display:flex; align-items:center; justify-content:center; color:#fff; flex:none;
+  }
+  .legis-item strong{display:block; font-size:1rem; font-weight:700;}
+  .legis-item span{font-size:0.88rem; color:var(--ink-soft);}
+  .legis-item .status{
+    font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.03em;
+    padding:4px 11px; border-radius:999px; white-space:nowrap;
+    border:1.5px solid var(--teal); color:var(--teal);
+  }
+  @media (max-width:600px){.legis-item{grid-template-columns:34px 1fr; } .legis-item .status{grid-column:2; width:fit-content;}}
+
+  /* Editais */
+  .editais-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:18px; position:relative; z-index:1;}
+  @media (max-width:700px){.editais-grid{grid-template-columns:1fr;}}
+  .edital-card{background:var(--surface); border:2px solid var(--line); border-radius:14px; padding:20px; position:relative;}
+  .edital-card .top-row{display:flex; justify-content:space-between; align-items:flex-start; gap:10px;}
+  .edital-card h3{font-size:1.1rem; font-weight:800;}
+  .edital-card p{font-size:0.92rem; color:var(--ink-soft); margin-top:8px;}
+  .edital-meta{display:flex; gap:16px; margin-top:14px; flex-wrap:wrap;}
+  .edital-meta div span{display:block; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.04em; color:var(--ink-soft);}
+  .edital-meta div strong{font-size:0.92rem; font-weight:700;}
+  .status-pill{font-size:0.7rem; font-weight:800; text-transform:uppercase; letter-spacing:0.03em; padding:4px 11px; border-radius:999px; white-space:nowrap;}
+  .status-aberto{background:var(--teal); color:#fff;}
+  .status-embreve{background:var(--gold); color:#2a1a00;}
+  .status-andamento{background:var(--primary); color:#fff;}
+
+  /* Programs grid */
+  .programs{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; position:relative; z-index:1;}
+  @media (max-width:860px){.programs{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:560px){.programs{grid-template-columns:1fr;}}
+  .program-card{
+    background:var(--surface);
+    border:2px solid var(--line);
+    border-radius:16px;
+    display:flex;
+    flex-direction:column;
+  }
+  .program-card .thumb{position:relative; aspect-ratio:16/10; overflow:hidden; border-radius:14px 14px 0 0;}
+  .program-card .thumb img{width:100%; height:100%; object-fit:cover; display:block;}
+  .program-card .icon{
+    position:absolute; left:14px; bottom:-20px;
+    width:46px; height:46px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    color:#fff; border:3px solid var(--surface);
+  }
+  .program-card .body{padding:30px 18px 18px;}
+  .program-card h3{font-size:1.25rem; font-weight:800;}
+  .program-card p{font-size:0.95rem; color:var(--ink-soft); margin-top:6px;}
+  .program-card .tag{
+    display:inline-block;
+    margin-top:12px;
+    font-weight:700;
+    font-size:0.72rem;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+    padding:4px 12px;
+    border-radius:999px;
+    color:#fff;
+  }
+  .t-dance .icon,.t-dance.tag{background:var(--accent);}
+  .t-music .icon,.t-music.tag{background:var(--teal);}
+  .t-orch .icon,.t-orch.tag{background:var(--violet);}
+  .t-conserv .icon,.t-conserv.tag{background:var(--gold); color:#2a1a00;}
+
+  /* Agenda */
+  .agenda-wrap{
+    display:grid;
+    grid-template-columns:1fr 300px;
+    gap:28px;
+    position:relative; z-index:1;
+  }
+  @media (max-width:800px){.agenda-wrap{grid-template-columns:1fr;}}
+  .agenda{background:var(--surface); border:2px solid var(--line); border-radius:16px; overflow:hidden;}
+  .agenda-row{display:grid; grid-template-columns:120px 1fr 150px; gap:12px; padding:16px 20px; border-bottom:2px solid var(--line); align-items:center; position:relative;}
+  .agenda-row:last-child{border-bottom:none;}
+  .agenda-row .day{font-weight:800; font-size:0.82rem; color:#fff; background:var(--pink); text-transform:uppercase; letter-spacing:0.03em; padding:4px 10px; border-radius:999px; width:fit-content;}
+  .agenda-row .what strong{display:block; font-size:1.02rem; font-weight:700;}
+  .agenda-row .what span{font-size:0.88rem; color:var(--ink-soft);}
+  .agenda-row .where{font-size:0.84rem; font-weight:500; color:var(--ink-soft); text-align:right;}
+  @media (max-width:620px){.agenda-row{grid-template-columns:1fr; text-align:left;} .agenda-row .where{text-align:left;}}
+
+  .cal-card{background:var(--bg); color:var(--ink); border:2px solid var(--line); border-top:5px solid var(--primary); border-radius:16px; padding:20px;}
+  .cal-card .cal-head{font-weight:800; font-size:1.05rem; text-transform:uppercase; margin-bottom:12px; color:var(--primary);}
+  .cal-grid{display:grid; grid-template-columns:repeat(7,1fr); gap:4px; font-size:0.74rem; text-align:center;}
+  .cal-grid .dow{font-weight:700; color:var(--ink-soft); padding-block:4px;}
+  .cal-grid .day{padding-block:6px; border-radius:6px; color:var(--ink-soft);}
+  .cal-grid .day.event{background:var(--gold); color:#2a1a00; font-weight:800;}
+  .cal-legend{margin-top:12px; display:flex; align-items:center; gap:8px; font-size:0.78rem; color:var(--ink-soft);}
+  .cal-legend .dot{width:9px; height:9px; border-radius:50%; background:var(--gold); display:inline-block;}
+
+  /* Location / contact */
+  .contact{
+    background:var(--bg);
+    color:var(--ink);
+    border:2px solid var(--line);
+    border-radius:20px;
+    padding:clamp(28px,5vw,46px);
+    display:grid;
+    grid-template-columns:1.1fr 1fr;
+    gap:clamp(26px,5vw,48px);
+    position:relative; z-index:1;
+  }
+  @media (max-width:760px){.contact{grid-template-columns:1fr;}}
+  .contact h2{font-size:clamp(1.8rem,3.6vw,2.3rem); color:var(--primary); font-weight:900; text-transform:uppercase;}
+  .contact-list{margin-top:20px; display:flex; flex-direction:column; gap:14px;}
+  .contact-item{display:flex; gap:12px; align-items:flex-start;}
+  .contact-item .ico{width:32px; height:32px; flex:none; background:var(--gold); color:#2a1a00; border-radius:50%; display:flex; align-items:center; justify-content:center;}
+  .contact-item strong{display:block; font-size:1rem; font-weight:700;}
+  .contact-item span{font-size:0.92rem; color:var(--ink-soft);}
+  .contact-item .copy-btn{margin-top:4px; font-weight:700; font-size:0.76rem; letter-spacing:0.03em; text-transform:uppercase; background:var(--primary); border:none; color:#fff; border-radius:999px; padding:5px 12px; cursor:pointer;}
+  .contact-item .copy-btn:hover{background:var(--accent);}
+  .map-card{background:var(--surface); border:2px solid var(--line); border-radius:14px; padding:20px; display:flex; flex-direction:column; justify-content:space-between;}
+  .map-mark{width:100%; max-width:220px; margin-inline:auto;}
+  .ig-link{margin-top:18px; display:inline-flex; align-items:center; gap:8px; font-weight:700; font-size:0.88rem; text-decoration:none; background:var(--primary); color:#fff; border-radius:999px; padding:10px 18px; width:fit-content; margin-inline:auto;}
+  .ig-link:hover{background:var(--accent);}
+
+  footer{padding-block:28px; border-top:2px solid var(--line); font-size:0.86rem; font-weight:500; color:var(--ink-soft); display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;}
+
+  /* ---------- Admin / edit mode (shown automatically to editors — no manual toggle) ---------- */
+  .empty-state{padding:28px 16px; text-align:center; color:var(--ink-soft); font-size:0.92rem;}
+  .admin-add{
+    display:none; margin-top:16px; font-family:"Lexend",sans-serif; font-weight:700; font-size:0.86rem;
+    background:#fff; border:1.5px dashed var(--primary); color:var(--primary);
+    border-radius:10px; padding:10px 18px; cursor:pointer; width:100%;
+  }
+  .admin-add:hover{background:var(--surface);}
+  body.editing .admin-add{display:block;}
+  .admin-edit-row{position:absolute; top:10px; right:10px; display:none; gap:6px; z-index:2;}
+  body.editing .admin-edit-row{display:flex;}
+  .admin-edit-row button{
+    width:26px; height:26px; border-radius:6px; border:1px solid var(--line); background:#fff;
+    color:var(--ink-soft); cursor:pointer; display:flex; align-items:center; justify-content:center;
+  }
+  .admin-edit-row button:hover{border-color:var(--primary); color:var(--primary);}
+  .admin-edit-row button.del:hover{border-color:var(--accent); color:var(--accent);}
+  .editable{position:relative;}
+  body.editing .editable{outline:1.5px dashed var(--line); outline-offset:3px; border-radius:10px;}
+
+  .modal-backdrop{
+    position:fixed; inset:0; background:rgba(18,19,39,0.55); z-index:50;
+    display:flex; align-items:center; justify-content:center; padding:20px;
+  }
+  .modal-backdrop[hidden]{display:none;}
+  .modal{background:#fff; border-radius:16px; width:min(480px,100%); max-height:88vh; overflow-y:auto; padding:26px;}
+  .modal h3{font-size:1.2rem; font-weight:800; margin-bottom:16px;}
+  .modal .field{margin-bottom:14px; display:flex; flex-direction:column; gap:6px;}
+  .modal .field label{font-size:0.8rem; font-weight:700; color:var(--ink-soft);}
+  .modal .field input, .modal .field textarea, .modal .field select{
+    font-family:"Lexend",sans-serif; font-size:0.95rem; padding:9px 11px;
+    border:1.5px solid var(--line); border-radius:8px; color:var(--ink); background:#fff;
+  }
+  .modal .field textarea{resize:vertical; min-height:64px;}
+  .modal .actions{display:flex; justify-content:space-between; gap:10px; margin-top:20px;}
+  .modal .actions .right{display:flex; gap:10px;}
+  .btn{font-family:"Lexend",sans-serif; font-weight:700; font-size:0.88rem; border-radius:999px; padding:9px 18px; cursor:pointer; border:1.5px solid transparent;}
+  .btn-primary{background:var(--primary); color:#fff;}
+  .btn-ghost{background:#fff; border-color:var(--line); color:var(--ink-soft);}
+  .btn-danger{background:#fff; border-color:var(--accent); color:var(--accent);}
+
+  @media (prefers-reduced-motion:no-preference){
+    .program-card, .fig-card{transition:transform 0.18s ease, box-shadow 0.18s ease;}
+    .program-card:hover, .fig-card:hover{transform:translateY(-3px); box-shadow:0 10px 24px -12px rgba(21,64,201,0.35); position:relative; z-index:2;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .hero-slide{transition:none;}
+  }
+</style>
+
+<div class="utility-bar">
+  <div class="wrap">
+    <span>Prefeitura Municipal de Corbélia — PR</span>
+    <a href="https://www.instagram.com/cultura.corbelia" target="_blank" rel="noopener">@cultura.corbelia no Instagram</a>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap nav-row">
+    <div class="wordmark">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 20V10L12 4L20 10V20H14V14H10V20H4Z" stroke="var(--primary)" stroke-width="2.2" stroke-linejoin="round"/></svg>
+      Departamento de Cultura <span>· Corbélia, PR</span>
+    </div>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-links">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <nav class="nav-links" id="nav-links">
+      <a href="#sobre">Sobre</a>
+      <a href="#espacos">Espaços</a>
+      <a href="#linguagens">Linguagens</a>
+      <a href="#agenda">Agenda</a>
+      <a href="#legislacao">Legislação</a>
+      <a href="#editais">Editais</a>
+      <a href="#contato">Visite</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero" id="hero-carousel">
+  <div class="wrap">
+    <div class="hero-content">
+      <p class="eyebrow">Departamento de Cultura · Corbélia, PR</p>
+      <h1>Onde a cidade <span class="hl">ensaia</span>, pinta e toca</h1>
+      <p class="lede">Aulas de música, dança e artes abertas à comunidade, com oficinas gratuitas, orquestra sinfônica municipal e um conservatório que forma gente de todas as idades.</p>
+      <div class="hero-stats">
+        <div><strong>900+</strong><span>Famílias atendidas</span></div>
+        <div><strong>6</strong><span>Linguagens artísticas</span></div>
+        <div><strong>1960</strong><span>Praça da fundação</span></div>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="hero-slide active" data-slide="0">
+        <img src="/_blob/4b8aa3f41d330993d1c0a4e1f92a29d6" alt="Turma de arte e cultura em atividade — foto ilustrativa">
+        <div class="hero-scrim"></div>
+      </div>
+      <div class="hero-slide" data-slide="1">
+        <img src="/_blob/80e460e123085d43596e10df7037e68d" alt="Orquestra sinfônica em apresentação — foto ilustrativa">
+        <div class="hero-scrim"></div>
+      </div>
+      <div class="hero-slide" data-slide="2">
+        <img src="/_blob/9edefad59d654f1687386144a978af95" alt="Bailarina em aula de ballet — foto ilustrativa">
+        <div class="hero-scrim"></div>
+      </div>
+      <button class="hero-nav prev" onclick="heroGo(-1)" aria-label="Foto anterior">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="hero-nav next" onclick="heroGo(1)" aria-label="Próxima foto">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="hero-dots">
+        <button class="active" onclick="heroSet(0)" aria-label="Foto 1"></button>
+        <button onclick="heroSet(1)" aria-label="Foto 2"></button>
+        <button onclick="heroSet(2)" aria-label="Foto 3"></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="quicknav">
+  <div class="wrap">
+    <span class="label">Explore por linguagem:</span>
+    <div class="pills">
+      <a class="pill" href="#linguagens">Dança</a>
+      <a class="pill" href="#linguagens">Teclado</a>
+      <a class="pill" href="#linguagens">Violão</a>
+      <a class="pill" href="#linguagens">Acordeon</a>
+      <a class="pill" href="#linguagens">Orquestra</a>
+      <a class="pill" href="#linguagens">Conservatório</a>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <section id="sobre">
+    <div class="blob" style="background:var(--violet); top:10px; right:0;"></div>
+    <div class="section-head">
+      <div class="title-row">
+        <span class="bar" style="background:var(--violet)"></span>
+        <h2>Cultura é serviço<br>público, não vitrine</h2>
+      </div>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p>O Departamento de Cultura de Corbélia coordena o Centro Cultural do município: aulas regulares, grupos de apresentação e o apoio às tradições locais, da festa do colono às rodas de viola.</p>
+        <p>As turmas são formadas por idade e nível, com professores da rede municipal e parceiros convidados. A maior parte das oficinas é gratuita e aberta a moradores de Corbélia e distritos.</p>
+      </div>
+      <div class="about-figures">
+        <div class="fig-card"><strong>6</strong><span>linguagens artísticas ativas</span></div>
+        <div class="fig-card"><strong>Semanal</strong><span>frequência das turmas</span></div>
+        <div class="fig-card"><strong>Gratuito</strong><span>na maioria das oficinas</span></div>
+        <div class="fig-card"><strong>Todas</strong><span>as idades, do infantil ao melhor idade</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="espacos">
+    <div class="blob" style="background:var(--gold); top:0; right:-20px;"></div>
+    <div class="section-head">
+      <div class="title-row">
+        <span class="bar" style="background:var(--gold)"></span>
+        <h2>Espaços culturais</h2>
+      </div>
+      <p>Dois equipamentos municipais, duas frentes: formação artística e memória da cidade.</p>
+    </div>
+    <div class="spaces-grid">
+      <article class="space-card">
+        <div class="photo"><img src="/_blob/99f92b80cb8781634388e0b292f9440b" alt="Auditório do Centro Cultural — foto ilustrativa"></div>
+        <div class="body">
+          <h3>Centro Cultural</h3>
+          <p class="addr">Rua Hortência, 191 — Corbélia, PR</p>
+          <p class="desc">Sede das aulas de música, dança, orquestra sinfônica e conservatório — o espaço descrito nas seções acima.</p>
+          <div class="space-tags">
+            <span>Aulas de música</span><span>Dança</span><span>Orquestra</span><span>Conservatório</span>
+          </div>
+          <div class="space-links">
+            <a href="https://www.instagram.com/cultura.corbelia" target="_blank" rel="noopener">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor"/></svg>
+              @cultura.corbelia
+            </a>
+          </div>
+        </div>
+      </article>
+      <article class="space-card">
+        <div class="photo"><img src="/_blob/cf2a91b4dd03a063dca4fac1d26cbc98" alt="Estantes da Biblioteca Municipal — foto ilustrativa"></div>
+        <div class="body">
+          <h3>Complexo Cultural</h3>
+          <p class="addr">Biblioteca, museu e memória de Corbélia</p>
+          <p class="desc">Reúne a Biblioteca Municipal, a sala de exposição, o museu histórico, o arquivo histórico e o espaço de contação de histórias.</p>
+          <div class="space-tags">
+            <span>Biblioteca Municipal</span><span>Sala de exposição</span><span>Museu histórico</span><span>Arquivo histórico</span><span>Contação de histórias</span>
+          </div>
+          <div class="space-links">
+            <a class="alt" href="https://www.instagram.com/complexocultural2024" target="_blank" rel="noopener">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor"/></svg>
+              @complexocultural2024
+            </a>
+            <a class="alt" href="https://maps.app.goo.gl/ZKDp2ekXxpTd5frE6" target="_blank" rel="noopener">Ver no mapa</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="linguagens">
+    <div class="blob" style="background:var(--accent); bottom:0; left:-20px;"></div>
+    <div class="section-head">
+      <div class="title-row">
+        <span class="bar" style="background:var(--accent)"></span>
+        <h2>Linguagens artísticas</h2>
+      </div>
+      <p>Seis frentes de trabalho, cada uma com sua turma, seu professor e seu palco.</p>
+    </div>
+    <div class="programs">
+      <article class="program-card">
+        <div class="thumb">
+          <img src="/_blob/9edefad59d654f1687386144a978af95" alt="Bailarina em aula de ballet — foto ilustrativa">
+          <span class="icon t-dance"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2a2.2 2.2 0 1 1 0 4.4A2.2 2.2 0 0 1 12 2Z" fill="#fff"/><path d="M8 22l2.5-8L7 11l1-4 4 1 4-1 1 4-3.5 3 2.5 8" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+        </div>
+        <div class="body">
+          <h3>Jazz & Ballet</h3>
+          <p>Turmas de iniciação e intermediário em dança, com mostras no calendário cultural da cidade.</p>
+          <span class="tag t-dance">Dança</span>
+        </div>
+      </article>
+      <article class="program-card">
+        <div class="thumb">
+          <img src="/_blob/14dfbfadc20924e233cb35bca2259c5e" alt="Aula de teclado — foto ilustrativa">
+          <span class="icon t-music"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="7" width="18" height="12" rx="1.5" stroke="#fff" stroke-width="1.6"/><path d="M6 7v7M10 7v9M14 7v7M18 7v9" stroke="#fff" stroke-width="1.6"/></svg></span>
+        </div>
+        <div class="body">
+          <h3>Curso de Teclado</h3>
+          <p>Teoria musical e prática de teclado em grupo, do zero à leitura de partitura.</p>
+          <span class="tag t-music">Música</span>
+        </div>
+      </article>
+      <article class="program-card">
+        <div class="thumb">
+          <img src="/_blob/5fb1cd128565b3f4eeebad5b8d33b335" alt="Aula de violão — foto ilustrativa">
+          <span class="icon t-music"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="17" r="3" stroke="#fff" stroke-width="1.6"/><path d="M11.5 17V5l6-2v12" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="body">
+          <h3>Curso de Violão</h3>
+          <p>Cordas e acordes populares, turmas iniciantes e avançadas, instrumento próprio ou emprestado.</p>
+          <span class="tag t-music">Música</span>
+        </div>
+      </article>
+      <article class="program-card">
+        <div class="thumb">
+          <img src="/_blob/e87af763538f4d962296a1d7e1bde0e0" alt="Músico tocando acordeon — foto ilustrativa">
+          <span class="icon t-music"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="7" height="16" rx="1.4" stroke="#fff" stroke-width="1.6"/><rect x="13" y="4" width="7" height="16" rx="1.4" stroke="#fff" stroke-width="1.6"/></svg></span>
+        </div>
+        <div class="body">
+          <h3>Curso de Acordeon</h3>
+          <p>Tradição gaúcha e paranaense no fole, forte na identidade musical da região.</p>
+          <span class="tag t-music">Música</span>
+        </div>
+      </article>
+      <article class="program-card">
+        <div class="thumb">
+          <img src="/_blob/80e460e123085d43596e10df7037e68d" alt="Orquestra sinfônica em apresentação — foto ilustrativa">
+          <span class="icon t-orch"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 20V10l8-6 8 6v10" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 20v-6h6v6" stroke="#fff" stroke-width="1.6"/></svg></span>
+        </div>
+        <div class="body">
+          <h3>Orquestra Sinfônica</h3>
+          <p>Grupo municipal de cordas e sopros que representa Corbélia em festivais regionais.</p>
+          <span class="tag t-orch">Orquestra</span>
+        </div>
+      </article>
+      <article class="program-card">
+        <div class="thumb">
+          <img src="/_blob/99f92b80cb8781634388e0b292f9440b" alt="Auditório de teatro — foto ilustrativa">
+          <span class="icon t-conserv"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 20V10L12 4L20 10V20" stroke="#2a1a00" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 20v-5h6v5" stroke="#2a1a00" stroke-width="1.6"/></svg></span>
+        </div>
+        <div class="body">
+          <h3>Conservatório de Cultura</h3>
+          <p>Formação continuada em artes, com mostras, concertos e produções abertas ao público.</p>
+          <span class="tag t-conserv">Conservatório</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="agenda">
+    <div class="blob" style="background:var(--teal); top:-10px; right:10%;"></div>
+    <div class="section-head">
+      <div class="title-row">
+        <span class="bar" style="background:var(--teal)"></span>
+        <h2>Agenda cultural</h2>
+      </div>
+      <p>Horário de referência das turmas — confirme vagas e horários exatos com a secretaria.</p>
+    </div>
+    <div class="agenda-wrap">
+      <div>
+        <div class="agenda" id="agenda-list"><div class="empty-state">Carregando agenda…</div></div>
+        <button class="admin-add" data-coll="agenda" hidden>+ Adicionar horário</button>
+      </div>
+      <div class="cal-card">
+        <div class="cal-head">Outubro</div>
+        <div class="cal-grid">
+          <span class="dow">D</span><span class="dow">S</span><span class="dow">T</span><span class="dow">Q</span><span class="dow">Q</span><span class="dow">S</span><span class="dow">S</span>
+          <span></span><span></span><span></span><span></span><span class="day">1</span><span class="day">2</span><span class="day">3</span>
+          <span class="day">4</span><span class="day event">5</span><span class="day">6</span><span class="day event">7</span><span class="day">8</span><span class="day event">9</span><span class="day">10</span>
+          <span class="day">11</span><span class="day event">12</span><span class="day">13</span><span class="day event">14</span><span class="day">15</span><span class="day event">16</span><span class="day">17</span>
+          <span class="day">18</span><span class="day event">19</span><span class="day">20</span><span class="day event">21</span><span class="day">22</span><span class="day event">23</span><span class="day">24</span>
+          <span class="day">25</span><span class="day event">26</span><span class="day">27</span><span class="day event">28</span><span class="day">29</span><span class="day event">30</span><span class="day">31</span>
+        </div>
+        <div class="cal-legend"><span class="dot"></span> dias com aula ou ensaio</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="legislacao">
+    <div class="blob" style="background:var(--primary); top:0; right:10%;"></div>
+    <div class="section-head">
+      <div class="title-row">
+        <span class="bar" style="background:var(--primary)"></span>
+        <h2>Legislação da cultura</h2>
+      </div>
+      <p>As leis e decretos que sustentam a política cultural do município.</p>
+    </div>
+    <div class="legis-note">⚠️ Lista estrutural, a conferir com o Departamento: números, datas e links oficiais de cada norma entram aqui assim que a Procuradoria ou a Câmara Municipal os confirmar.</div>
+    <div class="legis-list" id="legis-list"><div class="empty-state">Carregando legislação…</div></div>
+    <button class="admin-add" data-coll="legislacao" hidden>+ Adicionar norma</button>
+  </section>
+
+  <section id="editais">
+    <div class="blob" style="background:var(--pink); bottom:0; left:5%;"></div>
+    <div class="section-head">
+      <div class="title-row">
+        <span class="bar" style="background:var(--pink)"></span>
+        <h2>Editais de fomento e projetos</h2>
+      </div>
+      <p>Chamamentos públicos e projetos próprios do Departamento de Cultura.</p>
+    </div>
+    <div class="legis-note">⚠️ Estrutura ilustrativa: assim que o Departamento publicar os editais vigentes, os cards abaixo entram com número, valor, prazo e link oficial de cada chamamento.</div>
+    <div class="editais-grid" id="editais-grid"><div class="empty-state">Carregando editais…</div></div>
+    <button class="admin-add" data-coll="editais" hidden>+ Adicionar edital</button>
+  </section>
+
+  <section id="contato">
+    <div class="contact">
+      <div>
+        <p class="eyebrow" style="color:var(--gold)">Visite o Centro Cultural</p>
+        <h2>Rua Hortência, 191<br>Corbélia — PR</h2>
+        <div class="contact-list">
+          <div class="contact-item">
+            <span class="ico">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9.5" r="2.3" stroke="currentColor" stroke-width="2"/></svg>
+            </span>
+            <div>
+              <strong>Endereço</strong>
+              <span id="addr-text">Rua Hortência, 191 — Corbélia, PR</span><br>
+              <button class="copy-btn" onclick="copyAddr()" id="copy-btn">Copiar endereço</button>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="ico">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="2"/><path d="M3 9h18M8 2v4M16 2v4" stroke="currentColor" stroke-width="2"/></svg>
+            </span>
+            <div>
+              <strong>Matrículas e turmas</strong>
+              <span>Procure a secretaria do Centro Cultural para turmas, vagas e horários.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="map-card">
+        <svg class="map-mark" viewBox="0 0 160 160" fill="none">
+          <rect x="6" y="6" width="148" height="148" rx="12" fill="none" stroke="var(--line)" stroke-width="2"/>
+          <path d="M80 140 C80 140 40 100 40 68 A40 40 0 1 1 120 68 C120 100 80 140 80 140Z" fill="none" stroke="var(--primary)" stroke-width="3"/>
+          <circle cx="80" cy="66" r="12" fill="var(--pink)"/>
+        </svg>
+        <a class="ig-link" href="https://www.instagram.com/cultura.corbelia/" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor"/></svg>
+          @cultura.corbelia
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <span>Departamento de Cultura de Corbélia — Prefeitura Municipal de Corbélia</span>
+  <span>Conteúdo, agenda, legislação, editais e fotos ilustrativos — serão substituídos por dados e registros oficiais do Departamento</span>
+</footer>
+
+<div class="modal-backdrop" id="modal-backdrop" hidden>
+  <div class="modal" id="modal-box" role="dialog" aria-modal="true">
+    <h3 id="modal-title">Editar item</h3>
+    <form id="modal-form"></form>
+    <div id="modal-error" style="display:none; color:var(--accent); font-size:0.84rem; margin-top:4px;"></div>
+    <div class="actions">
+      <button type="button" class="btn btn-danger" id="modal-delete" hidden>Excluir</button>
+      <div class="right">
+        <button type="button" class="btn btn-ghost" id="modal-cancel">Cancelar</button>
+        <button type="button" class="btn btn-primary" id="modal-save">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function copyAddr(){
+    var text = document.getElementById('addr-text').textContent;
+    var btn = document.getElementById('copy-btn');
+    function done(){ btn.textContent = 'Copiado ✓'; setTimeout(function(){ btn.textContent = 'Copiar endereço'; }, 1800); }
+    try{
+      navigator.clipboard.writeText(text).then(done, fallback);
+    }catch(e){ fallback(); }
+    function fallback(){
+      var r = document.createRange();
+      var el = document.getElementById('addr-text');
+      r.selectNode(el);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(r);
+      done();
+    }
+  }
+
+  (function(){
+    var slides = document.querySelectorAll('.hero-slide');
+    var dots = document.querySelectorAll('.hero-dots button');
+    var i = 0, timer;
+    function show(n){
+      i = (n + slides.length) % slides.length;
+      slides.forEach(function(s, idx){ s.classList.toggle('active', idx === i); });
+      dots.forEach(function(d, idx){ d.classList.toggle('active', idx === i); });
+    }
+    window.heroGo = function(delta){ show(i + delta); restart(); };
+    window.heroSet = function(n){ show(n); restart(); };
+    function restart(){
+      clearInterval(timer);
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+        timer = setInterval(function(){ show(i + 1); }, 5500);
+      }
+    }
+    restart();
+  })();
+
+  (function(){
+    var navToggle = document.getElementById('nav-toggle');
+    var navLinks = document.getElementById('nav-links');
+    if (!navToggle || !navLinks) return;
+    navToggle.addEventListener('click', function(){
+      var open = navLinks.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    navLinks.addEventListener('click', function(e){
+      if (e.target.tagName === 'A'){
+        navLinks.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+    document.addEventListener('click', function(e){
+      if (!navLinks.classList.contains('open')) return;
+      if (navLinks.contains(e.target) || navToggle.contains(e.target)) return;
+      navLinks.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  })();
+
+  (function(){
+    var FIELD_CONFIG = {
+      agenda: [
+        {key:'day', label:'Dia(s)', placeholder:'Ex: Seg · Qua'},
+        {key:'title', label:'Atividade', placeholder:'Ex: Curso de Violão'},
+        {key:'detail', label:'Detalhe', placeholder:'Ex: Turmas iniciante e avançada'},
+        {key:'where', label:'Local', placeholder:'Ex: Sala de cordas'}
+      ],
+      legislacao: [
+        {key:'title', label:'Título da norma'},
+        {key:'desc', label:'Descrição', type:'textarea'},
+        {key:'status', label:'Status', placeholder:'Ex: Vigente'}
+      ],
+      editais: [
+        {key:'title', label:'Título do edital'},
+        {key:'desc', label:'Descrição', type:'textarea'},
+        {key:'status', label:'Situação', type:'select', options:[['aberto','Aberto'],['embreve','Em breve'],['andamento','Em andamento']]},
+        {key:'meta1Label', label:'Rótulo do dado 1', placeholder:'Ex: Valor total'},
+        {key:'meta1Value', label:'Valor do dado 1', placeholder:'Ex: R$ 50.000'},
+        {key:'meta2Label', label:'Rótulo do dado 2', placeholder:'Ex: Inscrições'},
+        {key:'meta2Value', label:'Valor do dado 2', placeholder:'Ex: até 30/11'}
+      ]
+    };
+    var STATUS_LABEL = {aberto:'Aberto', embreve:'Em breve', andamento:'Em andamento'};
+    var LIST_EL = {agenda:'agenda-list', legislacao:'legis-list', editais:'editais-grid'};
+
+    var db = null, canEdit = false;
+
+    function escapeHtml(s){
+      return String(s==null?'':s).replace(/[&<>"']/g, function(c){
+        return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+      });
+    }
+    function icon(name){
+      return name==='edit'
+        ? '<svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M4 20l1-4.5L16 4.5 19.5 8 8.5 19 4 20Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>'
+        : '<svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    }
+    function adminRow(coll, id){
+      return '<span class="admin-edit-row" data-coll="'+coll+'" data-id="'+id+'">' +
+        '<button type="button" class="edit" title="Editar">'+icon('edit')+'</button>' +
+        '<button type="button" class="del" title="Excluir">'+icon('del')+'</button>' +
+      '</span>';
+    }
+
+    function renderAgenda(docs){
+      var el = document.getElementById('agenda-list');
+      if (!docs.length){ el.innerHTML = '<div class="empty-state">Nenhum horário cadastrado ainda.</div>'; return; }
+      el.innerHTML = docs.map(function(d){
+        var v = d.data();
+        return '<div class="agenda-row editable">' +
+          '<span class="day">'+escapeHtml(v.day)+'</span>' +
+          '<div class="what"><strong>'+escapeHtml(v.title)+'</strong><span>'+escapeHtml(v.detail)+'</span></div>' +
+          '<span class="where">'+escapeHtml(v.where)+'</span>' +
+          adminRow('agenda', d.id) +
+        '</div>';
+      }).join('');
+    }
+    function renderLegis(docs){
+      var el = document.getElementById('legis-list');
+      if (!docs.length){ el.innerHTML = '<div class="empty-state">Nenhuma norma cadastrada ainda.</div>'; return; }
+      el.innerHTML = docs.map(function(d){
+        var v = d.data();
+        return '<div class="legis-item editable">' +
+          '<span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 3h9l4 4v14H6V3Z" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/><path d="M15 3v4h4" stroke="#fff" stroke-width="1.6"/></svg></span>' +
+          '<div><strong>'+escapeHtml(v.title)+'</strong><span>'+escapeHtml(v.desc)+'</span></div>' +
+          '<span class="status">'+escapeHtml(v.status)+'</span>' +
+          adminRow('legislacao', d.id) +
+        '</div>';
+      }).join('');
+    }
+    function renderEditais(docs){
+      var el = document.getElementById('editais-grid');
+      if (!docs.length){ el.innerHTML = '<div class="empty-state">Nenhum edital cadastrado ainda.</div>'; return; }
+      el.innerHTML = docs.map(function(d){
+        var v = d.data();
+        var cls = v.status==='aberto' ? 'status-aberto' : v.status==='andamento' ? 'status-andamento' : 'status-embreve';
+        var label = STATUS_LABEL[v.status] || v.status;
+        return '<article class="edital-card editable">' +
+          '<div class="top-row"><h3>'+escapeHtml(v.title)+'</h3><span class="status-pill '+cls+'">'+escapeHtml(label)+'</span></div>' +
+          '<p>'+escapeHtml(v.desc)+'</p>' +
+          '<div class="edital-meta">' +
+            '<div><span>'+escapeHtml(v.meta1Label)+'</span><strong>'+escapeHtml(v.meta1Value)+'</strong></div>' +
+            '<div><span>'+escapeHtml(v.meta2Label)+'</span><strong>'+escapeHtml(v.meta2Value)+'</strong></div>' +
+          '</div>' +
+          adminRow('editais', d.id) +
+        '</article>';
+      }).join('');
+    }
+    var RENDER = {agenda: renderAgenda, legislacao: renderLegis, editais: renderEditais};
+
+    function subscribe(coll){
+      db.collection(coll).orderBy('order','asc').onSnapshot(function(snap){
+        RENDER[coll](snap.docs);
+      }, function(){
+        document.getElementById(LIST_EL[coll]).innerHTML = '<div class="empty-state">Não foi possível carregar agora.</div>';
+      });
+    }
+
+    var backdrop = document.getElementById('modal-backdrop');
+    var form = document.getElementById('modal-form');
+    var titleEl = document.getElementById('modal-title');
+    var errorEl = document.getElementById('modal-error');
+    var deleteBtn = document.getElementById('modal-delete');
+    var saveBtn = document.getElementById('modal-save');
+    var cancelBtn = document.getElementById('modal-cancel');
+    var current = {coll:null, id:null};
+
+    function openModal(coll, id, data){
+      current = {coll:coll, id:id};
+      titleEl.textContent = id ? 'Editar item' : 'Adicionar item';
+      deleteBtn.hidden = !id;
+      errorEl.style.display = 'none';
+      var fields = FIELD_CONFIG[coll];
+      form.innerHTML = fields.map(function(f){
+        var val = (data && data[f.key]) || '';
+        if (f.type==='textarea'){
+          return '<div class="field"><label>'+f.label+'</label><textarea data-key="'+f.key+'">'+escapeHtml(val)+'</textarea></div>';
+        }
+        if (f.type==='select'){
+          var opts = f.options.map(function(o){
+            return '<option value="'+o[0]+'"'+(o[0]===val?' selected':'')+'>'+o[1]+'</option>';
+          }).join('');
+          return '<div class="field"><label>'+f.label+'</label><select data-key="'+f.key+'">'+opts+'</select></div>';
+        }
+        return '<div class="field"><label>'+f.label+'</label><input type="text" data-key="'+f.key+'" value="'+escapeHtml(val)+'" placeholder="'+(f.placeholder||'')+'"></div>';
+      }).join('');
+      backdrop.hidden = false;
+    }
+    function closeModal(){ backdrop.hidden = true; current = {coll:null, id:null}; }
+
+    cancelBtn.addEventListener('click', closeModal);
+    backdrop.addEventListener('click', function(e){ if (e.target === backdrop) closeModal(); });
+
+    saveBtn.addEventListener('click', function(){
+      if (!db || !current.coll) return;
+      var body = {};
+      form.querySelectorAll('[data-key]').forEach(function(el){ body[el.getAttribute('data-key')] = el.value; });
+      saveBtn.disabled = true;
+      var p;
+      if (current.id){
+        p = db.collection(current.coll).doc(current.id).update(body);
+      } else {
+        body.order = Date.now();
+        p = db.collection(current.coll).add(body);
+      }
+      p.then(closeModal).catch(function(err){
+        errorEl.textContent = 'Não foi possível salvar (' + (err && err.code || 'erro') + '). Tente novamente.';
+        errorEl.style.display = 'block';
+      }).finally(function(){ saveBtn.disabled = false; });
+    });
+
+    deleteBtn.addEventListener('click', function(){
+      if (!db || !current.id) return;
+      deleteBtn.disabled = true;
+      db.collection(current.coll).doc(current.id).delete().then(closeModal).catch(function(err){
+        errorEl.textContent = 'Não foi possível excluir (' + (err && err.code || 'erro') + ').';
+        errorEl.style.display = 'block';
+      }).finally(function(){ deleteBtn.disabled = false; });
+    });
+
+    document.addEventListener('click', function(e){
+      var editBtn = e.target.closest('.admin-edit-row .edit');
+      var delBtn = e.target.closest('.admin-edit-row .del');
+      var addBtn = e.target.closest('.admin-add');
+      if (editBtn){
+        var row = editBtn.closest('.admin-edit-row');
+        var coll = row.getAttribute('data-coll'), id = row.getAttribute('data-id');
+        db.collection(coll).doc(id).get().then(function(snap){ openModal(coll, id, snap.data()); });
+      } else if (delBtn){
+        var row2 = delBtn.closest('.admin-edit-row');
+        if (!db) return;
+        db.collection(row2.getAttribute('data-coll')).doc(row2.getAttribute('data-id')).delete();
+      } else if (addBtn){
+        openModal(addBtn.getAttribute('data-coll'), null, null);
+      }
+    });
+
+    (async function init(){
+      var user = null;
+      try{ user = window.claude ? await window.claude.use('user') : null; }catch(e){ user = null; }
+      try{ canEdit = user ? !!(user.canEdit && user.canEdit()) : false; }catch(e){ canEdit = false; }
+      document.body.classList.toggle('editing', canEdit);
+
+      try{ db = window.claude ? await window.claude.use('db') : null; }catch(e){ db = null; }
+      if (!db){
+        Object.keys(LIST_EL).forEach(function(coll){
+          document.getElementById(LIST_EL[coll]).innerHTML = '<div class="empty-state">Conteúdo dinâmico indisponível nesta visualização.</div>';
+        });
+        return;
+      }
+      subscribe('agenda');
+      subscribe('legislacao');
+      subscribe('editais');
+    })();
+  })();
+</script>
